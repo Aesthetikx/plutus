@@ -5,3 +5,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Changed
 - Tenancy is enabled from the get go. Assigning a tenant is optional. See "Previous Versions" in the README on upgrading.
+
+### Added
+- Add `Account#amounts` and `Account#entries` to get all amounts and entries, respectively
