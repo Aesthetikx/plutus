@@ -1,9 +1,9 @@
 PATH
   remote: ../
   specs:
-    plutus (0.12.0)
-      jquery-rails (~> 3.0)
-      jquery-ui-rails (~> 4.0)
+    plutus (0.12.2)
+      jquery-rails (>= 3.0)
+      jquery-ui-rails (>= 4.0)
       rails (~> 4.0)
 
 GEM
@@ -151,4 +151,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.4
+   1.11.2

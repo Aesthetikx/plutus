@@ -269,28 +269,11 @@ entry = Plutus::Entry.build(
 Multitenancy Support
 =====================
 
-Plutus supports multitenant applications. Multitenancy is acheived by associating all Accounts under `Plutus::Account` with a "Tenant" object (typically some model in your Rails application). To add multi-tenancy support to Plutus, you must do the following:
+Each account may belong to a polymorphic `tenant`. In previous versions plutus, the tenant code and tenant column had to be explicitly included by the developer. This complicated future changes (migrations, code testing) though and has since changed.
 
-- Generate the migration which will add `tenant_id` to the plutus accounts table
+In current versions of plutus, the accounts table have `tenant_id` and `tenant_type`. If you do not need accounts to belong to tenants, then you need not set these. The data storage overhead for empty columns with relational databases is negligible.
 
-```sh
-bundle exec rails g plutus:tenancy
-```
-
-- Run the migration
-
-```sh
-rake db:migrate
-```
-
-- Add an initializer to your Rails application, i.e. `config/initializers/plutus.rb`
-
-```ruby
-Plutus.config do |config|
-  config.enable_tenancy = true
-  config.tenant_class = 'Tenant'
-end
-```
+See "Previous Versions" on how to upgrade.
 
 Reporting Views
 ===============
@@ -312,6 +295,11 @@ mount Plutus::Engine => "/plutus", :as => "plutus"
 
 Previous Versions
 =================
+
+If you're upgrading from older versions prior to the tenancy changes, you need to:
+
+1. `rake plutus:install:migrations`
+2. `rake db:migrate`
 
 For the rails 3 version, you can go here:
 
